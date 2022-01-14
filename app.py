@@ -154,6 +154,13 @@ This STAC Discovery tool is based on the [pystac-client](https://pystac-client.r
 ---
 """
 
+st.warning('''
+  ⚠️ It usually takes some time to collect information from Catalogs. 
+
+  Please be patient. In most cases, it worths it 😉
+  ''')
+st.markdown("---")
+
 # Reading generic info about the Catalog
 try:
     root_catalog = Client.open(stacurl)
