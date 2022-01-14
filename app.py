@@ -142,8 +142,8 @@ with st.sidebar.expander("See examples"):
 &nbsp[![Follow](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&labelColor=blue)](https://www.linkedin.com/in/mykolakozyr/)
 &nbsp[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee--yellow.svg?logo=buy-me-a-coffee&logoColor=orange&style=social)](https://www.buymeacoffee.com/mykolakozyr)
 ## Details
-STAC Discovery tool enables discovering data in a given collection. The idea is to move from approach of providing geometry and dateframe to discovering the whole catalog.
-The main idea of it is to showcase the value of using **[STAC specification](http://stacspec.org/)** in describing geospatial information.
+STAC Discovery tool enables discovering data in a given collection. The idea is to move from the approach of providing geometry and dates to discovering the whole catalog.
+The main idea is to showcase the value of using **[STAC specification](http://stacspec.org/)** in describing geospatial information. Just imagine how great would it be to have a single interface to browse geospatial data. 
 
 Please note, it is not the best tool to discover data from large data catalogs. Use tools that designed to return first N items for a given area of interest.
 
