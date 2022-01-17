@@ -11,5 +11,5 @@ Please note, it is not the best tool to discover data from large data catalogs. 
 
 This STAC Discovery tool is based on the [pystac-client](https://pystac-client.readthedocs.io/en/latest/) v.0.3.1. 
 ## Known Limitations
-- :warning: It requires STAC spec v1.0.1
+- :warning: It requires STAC spec v1.0.0
 - :warning: Number of items to return is limited to 25000
