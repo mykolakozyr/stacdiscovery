@@ -47,12 +47,12 @@ def collectCollectionsInfo(root_catalog):
         collections_list.append([id, title, description])
     return(collections_list)
 
-def collectItemsInfo(collection):
+def collectItemsInfo(collection, limit_items):
     # Empty list that would be used for a dataframe to collect and visualize info about collections
     items_list = []
     # Reading items in the collection
     iterable = collection.get_all_items()
-    items = list(itertools.islice(iterable, 25000)) #getting first 25000 items. To Do some smarter logic
+    items = list(itertools.islice(iterable, limit_items)) #getting first 25000 items. To Do some smarter logic
     if len(items) == 0:
         st.warning('''
             ⚠️ Ooops, looks like this collection does not have items 🤷‍♂️.  
@@ -150,7 +150,7 @@ Please note, it is not the best tool to discover data from large data catalogs. 
 This STAC Discovery tool is based on the [pystac-client](https://pystac-client.readthedocs.io/en/latest/) v.0.3.1. 
 ### Known Limitations
 - :warning: It requires STAC spec v1.0.1
-- :warning: Number of items to return is limited to 25000
+- :warning: Max number of items to return is limited to 25000
 ---
 """
 
@@ -214,16 +214,18 @@ if root_catalog:
         collection = root_catalog.get_child(option)
 
         # Creating items dataframe
-        items_gdf = collectItemsInfo(collection)
-        st.sidebar.write(f"Number of items: {items_gdf.shape[0]}")
-
-        # Creating KeplerGL map
+        limit_items = st.sidebar.slider('Please specify number of STAC items to return.', min_value=1, max_value=25000, value=1000,)
         w1 = KeplerGl(height=800)
-        w1.add_data(data=items_gdf, name='staccollection')
-        w1.config = config
+        if st.sidebar.button('Visualize the STAC Collection!'):
+          items_gdf = collectItemsInfo(collection, limit_items)
+          st.sidebar.write(f"Number of items: {items_gdf.shape[0]}")
 
-        # Visualize in Streamlit
-        keplergl_static(w1)
+          # Creating KeplerGL map
+          w1.add_data(data=items_gdf, name='staccollection')
+          w1.config = config
+
+          # Visualize in Streamlit
+          keplergl_static(w1)
     else:
         st.stop()
 else:
