@@ -28,7 +28,6 @@ st.image(MAP_EMOJI_URL, width=80)
 # STAC Discovery
 """
 
-@st.cache
 def collectCollectionsInfo(root_catalog):
     # Expensive function. Added cache for it.
 
